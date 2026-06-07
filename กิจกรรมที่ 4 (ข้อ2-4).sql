@@ -16,7 +16,7 @@ Alter table company
 ALTER TABLE company
     alter column COMP_NAME char(20);
 
---3.เพิ่มข้อมูลแต่ละตาราง
+--3.เพิ่มข้อมูลแต่ละตาราง อะไรก็ได้ 3แถว
     INSERT INTO Address_1
         VALUES
             ('ad01','Pakgred','Nontaburi'),
