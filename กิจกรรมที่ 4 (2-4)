@@ -59,3 +59,6 @@ ALTER TABLE company
             ('ap01','ASP'),
             ('ap02','GRP_DS'),
             ('ap03','MGT');
+
+--4.ลบตารางCompany
+    DROP TABLE COMPANY;
