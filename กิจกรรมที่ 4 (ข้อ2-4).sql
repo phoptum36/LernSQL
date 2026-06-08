@@ -16,7 +16,7 @@ Alter table company
 ALTER TABLE company
     alter column COMP_NAME char(20);
 
---3.เพิ่มข้อมูลแต่ละตาราง อะไรก็ได้ 3แถว
+--3.เพิ่มข้อมูลแต่ละตาราง
     INSERT INTO Address_1
         VALUES
             ('ad01','Pakgred','Nontaburi'),
@@ -27,20 +27,20 @@ ALTER TABLE company
     INSERT into QUALIFICATION
         VALUES
             ('ASP','Web_ASP'),
-            ('GRP_DS','Graphic Design'),
-            ('MGT','Management');
+            ('NW','Network'),
+            ('c++','c++');
 
     INSERT INTO COMPANY
         VALUES
         ('cp01','stou-tec','Mr.Phop','ad01'),
         ('cp02','Stark-industry','Tony','ad01'),
-        ('cp03','Fantastic4','Reed','ad01');
+        ('cp03','Betasoft','Reed','ad01');
 
     INSERT INTO POSITION
         VALUES
             ('PS001','Technical Programmer', '1' ,25000, 3 ,'cp01'),
             ('PS003','General Manager', '3' , 35000 , 2 ,'cp01'),
-            ('PS006','ICT Documenter', '2' , 30000 , 1,'cp01');
+            ('PS010','ICT Manager', '2' , 30000 , 1,'cp01');
 
     INSERT INTO APPLICANT
         VALUES
@@ -51,14 +51,32 @@ ALTER TABLE company
     INSERT INTO POS_AP
         VALUES
             ('ap01','PS001','2026-05-01'),
-            ('ap02','PS002','2026-06-12'),
+            ('ap02','PS010','2026-06-12'),
             ('ap03','PS003','2026-06-20');
             
     INSERT INTO AP_QUAL
         VALUES
             ('ap01','ASP'),
-            ('ap02','GRP_DS'),
+            ('ap02','NW'),
             ('ap03','MGT');
 
---4.ลบตารางCompany
     DROP TABLE COMPANY;
+
+    DELETE FROM POSITION
+        where qual_code ='c++'
+            or qual_desc = 'c++';
+
+    update company
+        set comp_person ='นายบุญมี สุขมากง'
+        where comp_id ='cp03';
+
+    update POSITION
+        set pos_number = '4'
+        where pos_id = 'ps010';
+
+    --4.โชตำแหน่งที่ต้องการรับสมัคร
+        select  pos_id , pos_name , pos_period , pos_salary , pos_number
+        from position
+        order by comp_id ASC ;
+    
+
