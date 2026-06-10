@@ -79,4 +79,40 @@ ALTER TABLE company
         from position
         order by comp_id ASC ;
     
+    --5.แสดงข้อมูลผู้สมัคร 
+        select ap_id , ap_name , ap_ed , ap_maj , ap_sex , addr_id
+        from applicant
+        where  Ap_name Like 'A%'
+        OR     ap_name  LiKe '%Y%' ;
+
+    --6.หา POS_SALARY ,Max Min Average Count
+        SELECT Max(pos_salary) as MaxSalary,
+               Min(pos_salary) as MinSalary,
+               AVG(pos_salary) as AverageSalary,
+               Count(Pos_number) as CountPosition
+            from position ;
+
+    --7.แสดงข้อมูลไม่ซ้ำ
+        SELECT distinct addr_chw  --แสดงchw ไม่ซ้ำ
+            from address_1 , Applicant   --จากสองตาราง
+            where address_1.addr_id = applicant.addr_id   --เงื่อนไขตรงกันและ เพศชาย
+            AND ap_sex ='Men' ; 
+
+    --8.    แสดง Pos_Id Pos_name Pos_salary Pos_period โดย Pos_salary 20k++
+        select pos_id , pos_name , pos_salary , pos_period
+            from position            
+            where pos_salary >= 20000 
+                and pos_period >= 1  
+                and pos_period <=3 ;
+            
+--9. แสดง app_maj และcout(*)
+        select ap_maj ,COUNT(*) as Number_Pos
+        FROM applicant
+        group by ap_maj;
+       
+    --10.แสดง Comp_name , Pos_name  
+        select Comp_name , pos_name
+        from COMPANY , POSITION
+        where company.comp_id = position.comp_id ;
+
 
